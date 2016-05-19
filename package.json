@@ -1,0 +1,17 @@
+{
+  "name": "material",
+  "version": "0.0.1",
+  "description": "Admin template based on angular material desing package",
+  "author": {
+    "name": "mean scaffold"
+  },
+  "mean": "0.5.5",
+  "dependencies": {
+    "angular-animate": "latest",
+    "angular-aria": "latest",
+    "angular-material": "http://github.com/angular/bower-material/tarball/master",
+    "angular-material-data-table": "latest",
+    "angular-messages": "latest"
+  },
+  "license": "MIT"
+}

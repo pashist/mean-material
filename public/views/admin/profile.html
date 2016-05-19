@@ -1,0 +1,30 @@
+<section ng-controller="MaterialProfileController">
+    <md-card>
+        <md-card-content>
+            <form name="profileForm" autocomplete="false">
+                <md-input-container class="md-icon-float md-block">
+                    <md-icon class="material-icons">person</md-icon>
+                    <input ng-model="user.name" name="name" placeholder="Name" type="text" required
+                           md-autofocus>
+                </md-input-container>
+                <md-input-container class="md-icon-float md-block">
+                    <md-icon class="material-icons">perm_identity</md-icon>
+                    <input ng-model="user.username" placeholder="Username (required)" type="text" required
+                           ng-required="true">
+                </md-input-container>
+                <md-input-container class="md-block">
+                    <md-icon class="material-icons">mail_outline</md-icon>
+                    <input ng-model="user.email" ng-required="true" name="profile_email" type="email"
+                           placeholder="Email (required)">
+                </md-input-container>
+                <md-input-container class="md-block">
+                    <md-icon class="material-icons">vpn_key</md-icon>
+                    <input ng-model="user.password" type="password" name="profile_password" placeholder="Password">
+                </md-input-container>
+            </form>
+            <md-button ng-disabled="loading || profileForm.$invalid" ng-click="updateProfile($event, user)"
+                       class="md-primary md-raised">Update
+            </md-button>
+        </md-card-content>
+    </md-card>
+</section>

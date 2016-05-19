@@ -1,0 +1,46 @@
+<section data-ng-controller="MaterialUsersController" class="users">
+    <md-card>
+        <md-card-actions layout="row" layout-align="end center">
+            <md-button class="md-icon-button" ng-click="openUserDialog($event)">
+                <md-icon class="material-icons">add</md-icon>
+            </md-button>
+            <md-button class="md-icon-button md-primary" ng-click="openUserDialog($event, selected[0])"
+                       ng-disabled="selected.length!=1">
+                <md-icon class="material-icons">edit</md-icon>
+            </md-button>
+            <md-button class="md-icon-button md-warn" ng-click="openDeleteDialog($event, selected)"
+                       ng-disabled="!selected.length">
+                <md-icon class="material-icons">clear</md-icon>
+            </md-button>
+        </md-card-actions>
+        <md-card-content>
+            <md-table-container>
+                <table md-table md-row-select ng-model="selected" md-progress="promise" id="usersTable" layout-fill>
+                    <thead md-head md-order="query.order" md-on-reorder="onReorder">
+                    <tr md-row>
+                        <th md-column md-order-by="name">Name</th>
+                        <th md-column md-order-by="username">UserName</th>
+                        <th md-column md-order-by="email">Email</th>
+                        <th md-column>Roles</th>
+                    </tr>
+                    </thead>
+                    <tbody md-body>
+                    <tr md-row md-select="user" md-auto-select ng-repeat="user in users">
+                        <td md-cell ng-bind="user.name"></td>
+                        <td md-cell ng-bind="user.username"></td>
+                        <td md-cell ng-bind="user.email"></td>
+                        <td md-cell ng-bind="user.roles"></td>
+                    </tr>
+                    </tbody>
+                    <tfoot md-foot>
+                    <tr md-row>
+                        <td md-cell></td>
+                        <td md-cell><strong>Total: </strong><span>{{users.length}}</span></td>
+                        <td md-cell colspan="6"></td>
+                    </tr>
+                    </tfoot>
+                </table>
+            </md-table-container>
+        </md-card-content>
+    </md-card>
+</section>

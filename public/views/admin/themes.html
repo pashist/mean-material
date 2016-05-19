@@ -1,0 +1,19 @@
+<section ng-controller="MaterialThemesController">
+    <div class="color-palette">
+        <md-content class="md-padding" layout-xs="column" layout="row" layout-wrap>
+            <div flex-xs flex-gt-xs="50" flex-gt-sm="33" flex-gt-md="25" ng-repeat="palette in palettes">
+                <md-card class="{{palette.name == currentPalette ? '' : 'md-whiteframe-14dp'}}">
+                    <section class="color-group">
+                        <ul>
+                            <li ng-click="savePalette(palette.name)" class="color main-color" style="background-color: {{palette.color}};">
+                                <span class="name dark">{{palette.name}}</span>
+                                <span class="shade dark">500</span>
+                                <span class="hex dark">{{palette.color}}</span>
+                            </li>
+                        </ul>
+                    </section>
+                </md-card>
+            </div>
+        </md-content>
+    </div>
+</section>

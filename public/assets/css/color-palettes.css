@@ -1,0 +1,77 @@
+.color-palette {
+    color: rgba(255, 255, 255, 0.87);
+    font-size: 14px;
+    font-weight: 500;
+  /*  width: 1160px;
+    padding-bottom: 60px*/
+}
+
+
+.color-palette .module-end {
+    clear: left
+}
+
+.color-palette .light {
+    color: rgba(255, 255, 255, 0.87)
+}
+
+.color-palette .light-strong {
+    color: #fff
+}
+
+.color-palette .dark {
+    color: rgba(0, 0, 0, 0.87)
+}
+
+.color-palette .dark-when-small {
+    color: rgba(0, 0, 0, 0.87)
+}
+
+.color-palette .dark-strong {
+    color: #000
+}
+
+.color-palette .color-group, .color-palette .color-group:last-child {
+    float: left;
+    width: 100%;
+    display: block
+}
+
+.color-palette .color-group:after, .color-palette .color-group:last-child:after {
+    content: "";
+    display: table;
+    clear: both
+}
+
+.color-palette .color-group:first-child, .color-palette .color-group:nth-of-type(3n+1), .color-palette .color-group:last-child:first-child, .color-palette .color-group:last-child:nth-of-type(3n+1) {
+    clear: left;
+    margin-left: 0
+}
+.color-palette .color-group ul {
+   margin: 0; padding: 0;
+}
+.color-palette .color-group li, .color-palette .color-group:last-child li {
+    list-style-type: none
+}
+
+.color-palette .color-group li.color, .color-palette .color-group:last-child li.color {
+    padding: 15px
+}
+
+.color-palette .color-group li.color .hex, .color-palette .color-group:last-child li.color .hex {
+    float: right;
+    text-transform: uppercase
+}
+
+
+.color-palette .color-group li.main-color .name, .color-palette .color-group:last-child li.main-color .name {
+    display: block;
+    margin-bottom: 60px
+}
+
+.color-palette .color-group:hover {
+    cursor: pointer;
+}
+
+
+/*# sourceMappingURL=color-palettes.css.map */

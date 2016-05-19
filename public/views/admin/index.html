@@ -1,0 +1,63 @@
+<div layout-fill layout="row">
+    <div ng-controller="AdminController" layout="vertical">
+        <md-sidenav class="site-sidenav md-sidenav-left md-whiteframe-z2"
+                    md-component-id="left"
+                    md-is-locked-open="$mdMedia('gt-sm')">
+
+            <md-toolbar layout-align="center" class="md-whiteframe-z1 md-toolbar-tools">
+                <img src="/material/assets/img/logo.png" style="height: 80%">
+            </md-toolbar>
+            <md-list ng-if="menus.admin.length>0">
+                <md-list-item data-ng-repeat="item in menus.admin">
+                    <button class="md-button menu-button" ui-sref-active-eq="md-focused"
+                            ui-sref=".{{item.link}}">
+                        <md-icon class="material-icons">{{getIconName(item.title)}}</md-icon>
+                        <span mean-token="item.title">{{item.title.toLowerCase()}}</span>
+                    </button>
+                </md-list-item>
+            </md-list>
+            <md-divider ng-if="menus.admin.length>0"></md-divider>
+            <md-list ng-controller="HeaderController as headCtrl">
+                <md-list-item data-ng-repeat="item in headCtrl.menus.main">
+                    <button class="md-button menu-button" ui-route="/{{item.link}}" ui-sref-active-eq="md-focused"
+                            ui-sref='{{item.link}}'>
+                        <md-icon class="material-icons">{{item.icon || getIconName(item.title)}}</md-icon>
+                        <span mean-token="item.title">{{item.title}}</span>
+                    </button>
+                </md-list-item>
+            </md-list>
+        </md-sidenav>
+    </div>
+    <div layout="column" tabIndex="-1" role="main" class="md-whiteframe-z2" layout-fill>
+        <md-toolbar class="md-whiteframe-z1 md-toolbar-tools">
+            <md-button id="main" class="menu" hide-gt-sm ng-click="toggleList()" aria-label="">
+                <md-icon class="material-icons">dehaze</md-icon>
+            </md-button>
+            <h3 layout-align="left" class="toolbar-title">{{$state.current.data.title || $state.current.name}}</h3>
+            <span flex></span>
+            <md-menu md-offset="0 -7">
+                <md-button class="md-icon-button" ng-click="$mdOpenMenu($event)">
+                    <md-icon class="material-icons">person</md-icon>
+                </md-button>
+                <md-menu-content width="4">
+                    <md-menu-item>
+                        <md-button ui-sref="admin.profile">
+                            <md-icon class="material-icons">perm_identity</md-icon>
+                            <span md-menu-align-target>Profile</span>
+                        </md-button>
+                    </md-menu-item>
+                    <md-menu-item>
+                        <md-button ng-click="logout()">
+                            <md-icon class="material-icons">exit_to_app</md-icon>
+                            <span md-menu-align-target>Logout</span>
+                        </md-button>
+                    </md-menu-item>
+                </md-menu-content>
+            </md-menu>
+
+        </md-toolbar>
+        <md-content flex id="content" layout-fill layout-align="center center" ui-view>
+
+        </md-content>
+    </div>
+</div>

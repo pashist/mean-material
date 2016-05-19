@@ -1,0 +1,33 @@
+<md-dialog aria-label="Sign In" ng-cloak flex-gt-xs="50" flex-gt-sm="33" flex-gt-md="25" flex-gt-lg="20">
+    <md-toolbar>
+        <div class="md-toolbar-tools">
+            <h2>Register New Account</h2>
+            <span flex></span>
+            <md-button class="md-icon-button" ng-click="close()">
+                <md-icon class="material-icons" aria-label="Close dialog">clear</md-icon>
+            </md-button>
+        </div>
+    </md-toolbar>
+    <md-dialog-content class="md-dialog-content">
+        <form class="form-horizontal ng-pristine ng-valid" autocomplete="off" name="registrationForm">
+            <md-input-container class="md-icon-float md-block">
+                <input ng-model="user.username" name="username" placeholder="Username (required)" type="text" required
+                       ng-required="true" md-autofocus>
+            </md-input-container>
+            <md-input-container class="md-block">
+                <input ng-model="user.email" ng-required="true" name="email" required type="email"
+                       placeholder="Email (required)">
+            </md-input-container>
+            <md-input-container class="md-block">
+                <input ng-model="user.password" ng-required="true" type="password" required
+                       placeholder="Password (required)">
+            </md-input-container>
+        </form>
+        <div layout="column" flex>
+            <md-button ng-disabled="loading || registrationForm.$invalid" ng-click="register(user)"
+                       class="md-primary md-raised">
+                Submit
+            </md-button>
+        </div>
+    </md-dialog-content>
+</md-dialog>
