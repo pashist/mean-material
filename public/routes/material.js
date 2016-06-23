@@ -1,12 +1,19 @@
 'use strict';
 
-angular.module('mean.material').config(function ($stateProvider) {
+angular.module('mean.material').config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
+    $urlRouterProvider.otherwise('/');
+    $locationProvider.html5Mode(true);
     $stateProvider
         .state('front', {
             url: '/',
             templateUrl: 'material/views/index.html'
         })
         .state('admin', {
+            abstract: true,
+            controller: 'MaterialAdminController',
+            resolve: {
+                menu: $http => $http.get('/api/admin/menu/admin').then(response => response.data)
+            },
             url: '/admin',
             templateUrl: 'material/views/admin/index.html'
         })
@@ -14,7 +21,7 @@ angular.module('mean.material').config(function ($stateProvider) {
             data: {
                 title: 'Dashboard'
             },
-            url: '/dashboard',
+            url: '',
             templateUrl: 'material/views/admin/dashboard.html'
         })
         .state('admin.users', {

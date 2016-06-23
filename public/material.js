@@ -31,4 +31,4 @@ angular.module('mean.material').run(($rootScope, $state, $mdColorPalette) => {
     };
 });
 
-angular.module('mean-factory-interceptor', []); // hack to disable redirect on login fail attempt
+//angular.module('mean-factory-interceptor', []); // hack to disable redirect on login fail attempt

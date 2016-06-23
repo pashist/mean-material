@@ -115,14 +115,16 @@ angular.module('mean.material').controller('MaterialUsersController',
             page: 1
         };
 
-        function getUsers(query) {
-            var params = Object.assign($scope.query, query || {});
-            params.offset = params.limit * (params.page - 1);
-            $scope.promise = $http.get('/api/users', {params: params});
-            $scope.promise.then(function (response) {
-                $scope.users = response.data;
-                $scope.count = response.data.length;
-            })
+        function getUsers(query = $scope.query) {
+            var params = {
+                skip: query.limit * (query.page - 1),
+                sort: query.order,
+                limit: query.limit
+            };
+            $scope.promise = $http.get('/api/users', {params: params})
+                .then(response => $scope.users = response.data)
+                .then(() => $http.get('/api/users/count'))
+                .then(response => $scope.count = response.data.count)
         }
 
         $scope.onPaginate = function (page, limit) {
@@ -132,7 +134,7 @@ angular.module('mean.material').controller('MaterialUsersController',
         };
 
         $scope.onReorder = function (order) {
-            $scope.query = angular.extend($scope.query, {order: order});
+            $scope.query = angular.extend($scope.query, {sort: order});
             getUsers();
         };
         $scope.$on('UserCreated', function () {

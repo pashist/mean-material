@@ -9,7 +9,7 @@
   "dependencies": {
     "angular-animate": "latest",
     "angular-aria": "latest",
-    "angular-material": "http://github.com/angular/bower-material/tarball/master",
+    "angular-material": "latest",
     "angular-material-data-table": "latest",
     "angular-messages": "latest"
   },

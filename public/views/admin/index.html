@@ -1,14 +1,14 @@
 <div layout-fill layout="row">
-    <div ng-controller="AdminController" layout="vertical">
+    <div layout="vertical">
         <md-sidenav class="site-sidenav md-sidenav-left md-whiteframe-z2"
                     md-component-id="left"
                     md-is-locked-open="$mdMedia('gt-sm')">
 
-            <md-toolbar layout-align="center" class="md-whiteframe-z1 md-toolbar-tools">
+            <md-toolbar layout-align="center center" class="md-whiteframe-z1 md-toolbar-tools">
                 <img src="/material/assets/img/logo.png" style="height: 80%">
             </md-toolbar>
-            <md-list ng-if="menus.admin.length>0">
-                <md-list-item data-ng-repeat="item in menus.admin">
+            <md-list ng-if="menu.length>0">
+                <md-list-item data-ng-repeat="item in menu">
                     <button class="md-button menu-button" ui-sref-active-eq="md-focused"
                             ui-sref=".{{item.link}}">
                         <md-icon class="material-icons">{{getIconName(item.title)}}</md-icon>
@@ -16,16 +16,16 @@
                     </button>
                 </md-list-item>
             </md-list>
-            <md-divider ng-if="menus.admin.length>0"></md-divider>
-            <md-list ng-controller="HeaderController as headCtrl">
-                <md-list-item data-ng-repeat="item in headCtrl.menus.main">
+            <md-divider ng-if="menu.length>0"></md-divider>
+            <!--<md-list>
+                <md-list-item data-ng-repeat="item in menus.main">
                     <button class="md-button menu-button" ui-route="/{{item.link}}" ui-sref-active-eq="md-focused"
                             ui-sref='{{item.link}}'>
                         <md-icon class="material-icons">{{item.icon || getIconName(item.title)}}</md-icon>
                         <span mean-token="item.title">{{item.title}}</span>
                     </button>
                 </md-list-item>
-            </md-list>
+            </md-list>-->
         </md-sidenav>
     </div>
     <div layout="column" tabIndex="-1" role="main" class="md-whiteframe-z2" layout-fill>
