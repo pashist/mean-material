@@ -1,18 +1,24 @@
 'use strict';
 
-angular.module('mean.material').config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
+angular.module('mean.material').config(function ($stateProvider, $urlRouterProvider, $locationProvider, role) {
+
     $urlRouterProvider.otherwise('/');
     $locationProvider.html5Mode(true);
     $stateProvider
-        .state('front', {
+        .state('home', {
             url: '/',
             templateUrl: 'material/views/index.html'
+        })
+        .state('restricted', {
+            url: '/restricted',
+            templateUrl: 'material/views/restricted.html'
         })
         .state('admin', {
             abstract: true,
             controller: 'MaterialAdminController',
-            resolve: {
-                menu: $http => $http.get('/api/admin/menu/admin').then(response => response.data)
+            resolver: {
+                menu: $http => $http.get('/api/admin/menu/admin').then(response => response.data),
+                access: role.resolver('authenticated')
             },
             url: '/admin',
             templateUrl: 'material/views/admin/index.html'
@@ -22,11 +28,17 @@ angular.module('mean.material').config(function ($stateProvider, $urlRouterProvi
                 title: 'Dashboard'
             },
             url: '',
+            resolver: {
+                access: role.resolver('authenticated')
+            },
             templateUrl: 'material/views/admin/dashboard.html'
         })
         .state('admin.users', {
             data: {
                 title: 'Users'
+            },
+            resolver: {
+                access: role.resolver('admin')
             },
             url: '/users',
             templateUrl: 'material/views/admin/users.html'
@@ -42,6 +54,9 @@ angular.module('mean.material').config(function ($stateProvider, $urlRouterProvi
             data: {
                 title: 'Modules'
             },
+            resolver: {
+                access: role.resolver('admin')
+            },
             url: '/modules',
             templateUrl: 'material/views/admin/modules.html'
         })
@@ -56,15 +71,12 @@ angular.module('mean.material').config(function ($stateProvider, $urlRouterProvi
             data: {
                 title: 'Settings'
             },
+            resolver: {
+                access: role.resolver('admin')
+            },
             url: '/modules',
             templateUrl: 'material/views/admin/settings.html'
         });
 
-}).run(function ($rootScope, $state) {
-    $rootScope.$on('$stateChangeStart', function (event, toState, toParams, fromState, fromParams, options) {
-        if (toState.name == 'home') {
-            $state.go('front');
-        }
-    })
 });
 

@@ -1,18 +1,24 @@
 <section data-ng-controller="MaterialUsersController" class="users">
     <md-card>
-        <md-card-actions layout="row" layout-align="end center">
-            <md-button class="md-icon-button" ng-click="openUserDialog($event)">
-                <md-icon class="material-icons">add</md-icon>
-            </md-button>
-            <md-button class="md-icon-button md-primary" ng-click="openUserDialog($event, selected[0])"
-                       ng-disabled="selected.length!=1">
-                <md-icon class="material-icons">edit</md-icon>
-            </md-button>
-            <md-button class="md-icon-button md-warn" ng-click="openDeleteDialog($event, selected)"
-                       ng-disabled="!selected.length">
-                <md-icon class="material-icons">clear</md-icon>
-            </md-button>
-        </md-card-actions>
+        <md-card-title>
+            <md-card-title-text>
+                <span class="md-headline">Users management</span>
+            </md-card-title-text>
+            <md-card-actions layout="row" layout-align="end center">
+                <md-button class="md-icon-button" ng-click="openUserDialog($event)">
+                    <md-icon class="material-icons">add</md-icon>
+                </md-button>
+                <md-button class="md-icon-button md-primary" ng-click="openUserDialog($event, selected[0])"
+                           ng-disabled="selected.length!=1">
+                    <md-icon class="material-icons">edit</md-icon>
+                </md-button>
+                <md-button class="md-icon-button md-warn" ng-click="openDeleteDialog($event, selected)"
+                           ng-disabled="!selected.length">
+                    <md-icon class="material-icons">clear</md-icon>
+                </md-button>
+            </md-card-actions>
+        </md-card-title>
+
         <md-card-content>
             <md-table-container>
                 <table md-table md-row-select ng-model="selected" md-progress="promise" id="usersTable" layout-fill>

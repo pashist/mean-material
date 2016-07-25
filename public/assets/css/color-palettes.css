@@ -1,77 +1,31 @@
-.color-palette {
-    color: rgba(255, 255, 255, 0.87);
-    font-size: 14px;
-    font-weight: 500;
-  /*  width: 1160px;
-    padding-bottom: 60px*/
+.themePicker .section {
+    font-size: 12px;
+    padding: 16px;
+    font-weight: bold;
 }
 
-
-.color-palette .module-end {
-    clear: left
+.themePicker .line {
+    padding: 16px;
 }
 
-.color-palette .light {
-    color: rgba(255, 255, 255, 0.87)
+.themePicker .primary, .themePicker .accent {
+    margin: 4px 0;
+    height: 120px;
 }
 
-.color-palette .light-strong {
-    color: #fff
+.themePicker [md-colors] {
+    transition: all 0.3s cubic-bezier(0.35, 0, 0.25, 1);
 }
 
-.color-palette .dark {
-    color: rgba(0, 0, 0, 0.87)
+.themePicker p.footnote {
+    font-size: 0.85em;
+    margin: 30px;
+    padding: 5px;
+    background-color: rgba(205, 205, 205, 0.45);
 }
 
-.color-palette .dark-when-small {
-    color: rgba(0, 0, 0, 0.87)
+.themePicker .componentTag {
+    font-weight: bolder;
+    font-size: 1.2em;
+    padding-left: 10px;
 }
-
-.color-palette .dark-strong {
-    color: #000
-}
-
-.color-palette .color-group, .color-palette .color-group:last-child {
-    float: left;
-    width: 100%;
-    display: block
-}
-
-.color-palette .color-group:after, .color-palette .color-group:last-child:after {
-    content: "";
-    display: table;
-    clear: both
-}
-
-.color-palette .color-group:first-child, .color-palette .color-group:nth-of-type(3n+1), .color-palette .color-group:last-child:first-child, .color-palette .color-group:last-child:nth-of-type(3n+1) {
-    clear: left;
-    margin-left: 0
-}
-.color-palette .color-group ul {
-   margin: 0; padding: 0;
-}
-.color-palette .color-group li, .color-palette .color-group:last-child li {
-    list-style-type: none
-}
-
-.color-palette .color-group li.color, .color-palette .color-group:last-child li.color {
-    padding: 15px
-}
-
-.color-palette .color-group li.color .hex, .color-palette .color-group:last-child li.color .hex {
-    float: right;
-    text-transform: uppercase
-}
-
-
-.color-palette .color-group li.main-color .name, .color-palette .color-group:last-child li.main-color .name {
-    display: block;
-    margin-bottom: 60px
-}
-
-.color-palette .color-group:hover {
-    cursor: pointer;
-}
-
-
-/*# sourceMappingURL=color-palettes.css.map */

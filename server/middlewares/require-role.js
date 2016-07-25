@@ -1,22 +1,12 @@
 'use strict';
 
-module.exports = function(role) {
-    return function(req, res, next) {
-        function isAllowed() {
-            var result = false;
-            if (req.user && req.user.roles) {
-                var roles = role instanceof Array ? role : [role];
-                result = [].some.call(roles, function(val){
-                    return req.user.roles.indexOf(val) !== -1
-                })
-            }
-            return result;
-        }
-        if (isAllowed()) {
-            next();
-        } else {
-            res.sendStatus(401);
-            res.end();
-        }
+const hasRole = (user, role) => {
+    let result = false;
+    if (user && user.roles && user.roles instanceof Array) {
+        let roles = role instanceof Array ? role : [role];
+        result = roles.some(val => user.roles.indexOf(val) !== -1);
     }
+    return result;
 };
+
+module.exports = role => (req, res, next) => hasRole(req.user, role) ? next() : res.sendStatus(401).end();

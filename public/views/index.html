@@ -1,35 +1,6 @@
-<div layout="row">
-    <div flex layout="column" tabIndex="-1" role="main" class="md-whiteframe-z2">
-        <md-toolbar layout="row" class="md-whiteframe-z1">
-            <div class="md-toolbar-tools">
-                <img src="/material/assets/img/logo.png" style="height: 80%">
-                <span flex></span>
-                <md-button ng-if="!user.loggedin" class="md-icon-button" ng-click="openLoginDialog($event)">
-                    <md-icon class="material-icons">vpn_key</md-icon>
-                </md-button>
-                <div ng-if="user.loggedin">
-                    <md-menu md-offset="0 -7">
-                        <md-button ng-click="$mdOpenMenu($event)">
-                            {{user.user.email}} <md-icon class="material-icons">person</md-icon>
-                        </md-button>
-                        <md-menu-content width="4">
-                            <md-menu-item>
-                                <md-button ui-sref="admin.profile">
-                                    <md-icon class="material-icons">perm_identity</md-icon>
-                                    <span md-menu-align-target>Profile</span>
-                                </md-button>
-                            </md-menu-item>
-                            <md-menu-item>
-                                <md-button ng-click="logout()">
-                                    <md-icon class="material-icons">exit_to_app</md-icon>
-                                    <span md-menu-align-target>Logout</span>
-                                </md-button>
-                            </md-menu-item>
-                        </md-menu-content>
-                    </md-menu>
-                </div>
-            </div>
-        </md-toolbar>
+<div layout="row" layout-fill>
+    <div flex layout="column" tabIndex="-1" role="main">
+        <ng-include src="toolbar"></ng-include>
         <md-content flex id="content">
         </md-content>
     </div>

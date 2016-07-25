@@ -1,19 +1,28 @@
-<section ng-controller="MaterialThemesController">
-    <div class="color-palette">
-        <md-content class="md-padding" layout-xs="column" layout="row" layout-wrap>
-            <div flex-xs flex-gt-xs="50" flex-gt-sm="33" flex-gt-md="25" ng-repeat="palette in palettes">
-                <md-card class="{{palette.name == currentPalette ? '' : 'md-whiteframe-14dp'}}">
-                    <section class="color-group">
-                        <ul>
-                            <li ng-click="savePalette(palette.name)" class="color main-color" style="background-color: {{palette.color}};">
-                                <span class="name dark">{{palette.name}}</span>
-                                <span class="shade dark">500</span>
-                                <span class="hex dark">{{palette.color}}</span>
-                            </li>
-                        </ul>
-                    </section>
-                </md-card>
-            </div>
-        </md-content>
+<div layout="column" ng-cloak ng-controller="MaterialThemesCtrl" class="md-padding themePicker">
+    <p>
+        Select a color from the <a class="md-accent" href="{{mdURL}}">Theme Color Palettes</a>
+        below:
+    </p>
+    <!-- Theme Options -->
+    <div layout="row" layout-wrap layout-align="center center">
+        <md-button ng-repeat="color in colors" flex-gt-md="15" flex="30"
+                   md-colors="{background: '{{color}}'}" md-colors-watch="false"
+                   ng-disabled="primary === color && !isPrimary" ng-click="selectTheme(color)">
+            {{color}}
+        </md-button>
     </div>
-</section>
+    <div layout="row" layout-align="center center">
+        <div class="heading" style="padding-top: 20px;">
+            Theme preview
+        </div>
+    </div>
+    <div layout="row" class="section" layout-align="center center">
+        <div layout="column" flex="50">
+            <theme-preview primary="primary" accent="accent"></theme-preview>
+        </div>
+    </div>
+    <div layout="row" layout-align="center center">
+
+        <a flex="50" flex-lt-md="100" class="md-primary md-button md-raised" href="#" ng-click="applyTheme()">Apply Theme</a>
+    </div>
+</div>
