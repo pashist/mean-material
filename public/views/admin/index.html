@@ -28,7 +28,7 @@
             </md-list-item>
         </md-list>-->
     </md-sidenav>
-    <div layout="column" tabIndex="-1" role="main" class="md-whiteframe-z2" layout-fill>
+    <div layout="column" tabIndex="-1" role="main" class="md-whiteframe-z2" flex>
         <md-toolbar class="md-whiteframe-z1 md-toolbar-tools">
             <md-button id="main" class="menu" hide-gt-sm ng-click="toggleList()" aria-label="">
                 <md-icon class="material-icons">dehaze</md-icon>
@@ -56,8 +56,6 @@
             </md-menu>
 
         </md-toolbar>
-        <md-content flex id="content" layout-fill layout-align="center center" ui-view>
-
-        </md-content>
+        <md-content id="content" layout="column" flex layout-fill ui-view></md-content>
     </div>
 </div>
