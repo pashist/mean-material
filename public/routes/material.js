@@ -16,7 +16,7 @@ angular.module('mean.material').config(function ($stateProvider, $urlRouterProvi
         .state('admin', {
             abstract: true,
             controller: 'MaterialAdminController',
-            resolver: {
+            resolve: {
                 menu: $http => $http.get('/api/admin/menu/admin').then(response => response.data),
                 access: role.resolver('authenticated')
             },
@@ -28,7 +28,7 @@ angular.module('mean.material').config(function ($stateProvider, $urlRouterProvi
                 title: 'Dashboard'
             },
             url: '',
-            resolver: {
+            resolve: {
                 access: role.resolver('authenticated')
             },
             templateUrl: 'material/views/admin/dashboard.html'
@@ -37,7 +37,7 @@ angular.module('mean.material').config(function ($stateProvider, $urlRouterProvi
             data: {
                 title: 'Users'
             },
-            resolver: {
+            resolve: {
                 access: role.resolver('admin')
             },
             url: '/users',
@@ -54,7 +54,7 @@ angular.module('mean.material').config(function ($stateProvider, $urlRouterProvi
             data: {
                 title: 'Modules'
             },
-            resolver: {
+            resolve: {
                 access: role.resolver('admin')
             },
             url: '/modules',
@@ -71,7 +71,7 @@ angular.module('mean.material').config(function ($stateProvider, $urlRouterProvi
             data: {
                 title: 'Settings'
             },
-            resolver: {
+            resolve: {
                 access: role.resolver('admin')
             },
             url: '/modules',
